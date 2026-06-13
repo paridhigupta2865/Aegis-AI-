@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aegis AI— Customer Churn Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+  <!-- WATERMARK BACKGROUND -->
+  <div class="watermark" aria-hidden="true">
+    <div class="wm-track">
+      <span>Predict</span><span>Retain</span><span>Connect</span><span>Understand</span>
+      <span>Analyse</span><span>Forecast</span><span>Engage</span><span>Optimise</span>
+      <span>Predict</span><span>Retain</span><span>Connect</span><span>Understand</span>
+      <span>Analyse</span><span>Forecast</span><span>Engage</span><span>Optimise</span>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="14" cy="14" r="13" stroke="#C8860A" stroke-width="2" />
+          <path d="M8 18 Q11 10 14 14 Q17 18 20 8" stroke="#3E2723" stroke-width="2" fill="none"
+            stroke-linecap="round" />
+        </svg>
+        <span>Aegis AI</span>
+      </div>
+      <nav>
+        <a href="#predict">Predict</a>
+        <a href="#metrics">Model Metrics</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow">AI-Powered Retention Intelligence</div>
+    <h1>Find the churn <br> before it finds you.</h1>
+    <p class="hero-sub">Enter customer details below. Our ensemble of three machine learning models analyses churn risk
+      and delivers a confident prediction with supporting metrics.</p>
+    <a href="#predict" class="hero-cta">Start Predicting ↓</a>
+  </section>
+
+  <!-- PREDICTION FORM -->
+  <section id="predict" class="section">
+    <div class="section-header">
+      <span class="eyebrow">Step 01</span>
+      <h2>Customer Profile</h2>
+      <p>Fill in the fields below. All inputs are required for an accurate prediction.</p>
+    </div>
+
+    <form id="churnForm" class="dashboard-card">
+
+      <!-- Row 1: Demographics -->
+      <div class="form-block">
+        <div class="block-label">Demographics</div>
+        <div class="fields-row">
+
+          <div class="field">
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="SeniorCitizen">Senior Citizen</label>
+            <select id="SeniorCitizen" name="SeniorCitizen">
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="Partner">Partner</label>
+            <select id="Partner" name="Partner">
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="Dependents">Dependents</label>
+            <select id="Dependents" name="Dependents">
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Row 2: Account -->
+      <div class="form-block">
+        <div class="block-label">Account & Billing</div>
+        <div class="fields-row">
+
+          <div class="field">
+            <label for="tenure">Tenure <span class="unit">(months)</span></label>
+            <input type="number" id="tenure" name="tenure" placeholder="e.g. 24" min="0" max="72" required>
+          </div>
+
+          <div class="field">
+            <label for="MonthlyCharges">Monthly Charges <span class="unit">($)</span></label>
+            <input type="number" id="MonthlyCharges" name="MonthlyCharges" placeholder="e.g. 65.50" step="0.01"
+              required>
+          </div>
+
+          <div class="field">
+            <label for="TotalCharges">Total Charges <span class="unit">($)</span></label>
+            <input type="number" id="TotalCharges" name="TotalCharges" placeholder="e.g. 1500.00" step="0.01" required>
+          </div>
+
+          <div class="field">
+            <label for="Contract">Contract Type</label>
+            <select id="Contract" name="Contract">
+              <option value="Month-to-month">Month-to-month</option>
+              <option value="One year">One year</option>
+              <option value="Two year">Two year</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="PaymentMethod">Payment Method</label>
+            <select id="PaymentMethod" name="PaymentMethod">
+              <option value="Electronic check">Electronic check</option>
+              <option value="Mailed check">Mailed check</option>
+              <option value="Bank transfer (automatic)">Bank transfer (auto)</option>
+              <option value="Credit card (automatic)">Credit card (auto)</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="PaperlessBilling">Paperless Billing</label>
+            <select id="PaperlessBilling" name="PaperlessBilling">
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Row 3: Services -->
+      <div class="form-block">
+        <div class="block-label">Services Subscribed</div>
+        <div class="fields-row">
+
+          <div class="field">
+            <label for="PhoneService">Phone Service</label>
+            <select id="PhoneService" name="PhoneService">
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="MultipleLines">Multiple Lines</label>
+            <select id="MultipleLines" name="MultipleLines">
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="InternetService">Internet Service</label>
+            <select id="InternetService" name="InternetService">
+              <option value="Fiber optic">Fiber optic</option>
+              <option value="DSL">DSL</option>
+              <option value="No">No internet</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="OnlineSecurity">Online Security</label>
+            <select id="OnlineSecurity" name="OnlineSecurity">
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="OnlineBackup">Online Backup</label>
+            <select id="OnlineBackup" name="OnlineBackup">
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="DeviceProtection">Device Protection</label>
+            <select id="DeviceProtection" name="DeviceProtection">
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="TechSupport">Tech Support</label>
+            <select id="TechSupport" name="TechSupport">
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="StreamingTV">Streaming TV</label>
+            <select id="StreamingTV" name="StreamingTV">
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="StreamingMovies">Streaming Movies</label>
+            <select id="StreamingMovies" name="StreamingMovies">
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="form-footer">
+        <button type="submit" class="cta-btn" id="submitBtn">
+          Run Churn Analysis
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M3 9h12M10 4l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
+
+    </form>
+  </section>
+
+  <!-- MODEL METRICS COMPARISON -->
+  <section id="metrics" class="section metrics-section">
+    <div class="section-header">
+      <span class="eyebrow">Step 02</span>
+      <h2>Model Comparison</h2>
+      <p>Performance benchmarks of the three models trained on the Telco dataset.</p>
+    </div>
+
+    <div class="metrics-grid">
+
+      <!-- Accuracy chart -->
+      <div class="metric-card">
+        <div class="metric-title">Accuracy</div>
+        <div class="metric-subtitle">Proportion of correct predictions</div>
+        <div class="chart-bars">
+          <div class="bar-row">
+            <span class="bar-label">Logistic Regression</span>
+            <div class="bar-track">
+              <div class="bar-fill lr" style="--val:80%">80%</div>
+            </div>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">Random Forest</span>
+            <div class="bar-track">
+              <div class="bar-fill rf" style="--val:79%">79%</div>
+            </div>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">XGBoost</span>
+            <div class="bar-track">
+              <div class="bar-fill xgb" style="--val:81%">81%</div>
+            </div>
+          </div>
+        </div>
+        <div class="metric-note">* Exact values update after running the notebook</div>
+      </div>
+
+      <!-- ROC-AUC chart -->
+      <div class="metric-card">
+        <div class="metric-title">ROC–AUC Score</div>
+        <div class="metric-subtitle">Ability to rank churners over non-churners</div>
+        <div class="chart-bars">
+          <div class="bar-row">
+            <span class="bar-label">Logistic Regression</span>
+            <div class="bar-track">
+              <div class="bar-fill lr" style="--val:84%">0.84</div>
+            </div>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">Random Forest</span>
+            <div class="bar-track">
+              <div class="bar-fill rf" style="--val:83%">0.83</div>
+            </div>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">XGBoost</span>
+            <div class="bar-track">
+              <div class="bar-fill xgb" style="--val:86%">0.86</div>
+            </div>
+          </div>
+        </div>
+        <div class="metric-note">Higher is better — 1.0 is perfect, 0.5 is random</div>
+      </div>
+
+      <!-- Legend -->
+      <div class="metric-card legend-card">
+        <div class="metric-title">Key Insight</div>
+        <div class="metric-subtitle">Which model to trust and why</div>
+        <div class="legend-items">
+          <div class="legend-row lr-leg">
+            <div class="legend-dot lr"></div>
+            <div>
+              <strong>Logistic Regression</strong>
+              <p>Fast and interpretable. Best used when you need to explain the prediction to stakeholders.</p>
+            </div>
+          </div>
+          <div class="legend-row rf-leg">
+            <div class="legend-dot rf"></div>
+            <div>
+              <strong>Random Forest</strong>
+              <p>Robust ensemble. Handles missing patterns and non-linear relationships well.</p>
+            </div>
+          </div>
+          <div class="legend-row xgb-leg">
+            <div class="legend-dot xgb"></div>
+            <div>
+              <strong>XGBoost ✦ Best</strong>
+              <p>Highest AUC score. Sequential boosting captures subtle churn signals missed by others.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RESULT PANEL -->
+  <section id="resultSection" class="section result-section hidden">
+    <div class="section-header">
+      <span class="eyebrow">Step 03</span>
+      <h2>Prediction Result</h2>
+    </div>
+
+    <div class="result-outer">
+
+      <div id="resultCard" class="result-card">
+        <div class="result-top">
+          <div id="resultIcon" class="result-icon"></div>
+          <div>
+            <div id="resultModel" class="result-model-tag"></div>
+            <div id="resultStatus" class="result-status"></div>
+          </div>
+        </div>
+
+        <div class="prob-section">
+          <div class="prob-labels">
+            <span>Churn Probability</span>
+            <span id="probValue" class="prob-num"></span>
+          </div>
+          <div class="prob-track">
+            <div id="probBar" class="prob-fill"></div>
+          </div>
+        </div>
+
+        <div id="resultMessage" class="result-message"></div>
+
+        <div class="result-chips">
+          <div class="chip" id="chip1"></div>
+          <div class="chip" id="chip2"></div>
+          <div class="chip" id="chip3"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">Aegis AI</div>
+      <p>Built with Scikit-learn · XGBoost · Flask · Python</p>
+      <p class="footer-sub">Paridhi Gupta ·B.Tech Computer Science · NIT Delhi</p>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+
+</html>
